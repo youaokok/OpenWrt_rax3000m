@@ -40,11 +40,11 @@ jobs:
       - name: Checkout Projects
         uses: actions/checkout@main
 
-      - name: Initialization Environment
+      - name: 初始化环境
         env:
           DEBIAN_FRONTEND: noninteractive
         run: |
-          #docker rmi $(docker images -q)
+          docker rm $(docker ps -a -q)
           sudo -E rm -rf $(cat $GITHUB_WORKSPACE/Depends.txt | sed -n "1{s/\r$//;p;q}")
           sudo -E apt -yqq update
           sudo -E apt -yqq purge $(cat $GITHUB_WORKSPACE/Depends.txt | sed -n "2{s/\r$//;p;q}")
@@ -56,7 +56,7 @@ jobs:
           sudo -E systemctl daemon-reload
           sudo -E timedatectl set-timezone "Asia/Shanghai"
 
-      - name: Initialization Values
+      - name: 初始化值
         run: |
           export OWRT_DATE=$(TZ=UTC-8 date +"%y.%m.%d_%H.%M.%S")
           export OWRT_SOURCE=$(echo $OWRT_URL | cut -d '/' -f 5-)
