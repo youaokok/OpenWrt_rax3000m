@@ -127,8 +127,8 @@ jobs:
         run: |
           cd ./owrt
 
-          make download -j$(nproc)
-
+          make download -j$(($(nproc)+1))
+          
       - name: Compile Firmware
         run: |
           cd ./owrt
