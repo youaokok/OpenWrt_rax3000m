@@ -44,14 +44,15 @@ jobs:
         env:
           DEBIAN_FRONTEND: noninteractive
         run: |
-        docker rmi `docker images -q`
-        echo "Deleting files, please wait ..."
-        sudo rm -rf \
-          /usr/share/dotnet \
-          /usr/local/lib/android \
-          /opt/ghc \
-          /etc/mysql \
-          /etc/php
+          set +e
+          docker rmi `docker images -q`
+          echo "Deleting files, please wait ..."
+          sudo rm -rf \
+            /usr/share/dotnet \
+            /usr/local/lib/android \
+            /opt/ghc \
+            /etc/mysql \
+            /etc/php
           sudo -E rm -rf $(cat $GITHUB_WORKSPACE/Depends.txt | sed -n "1{s/\r$//;p;q}")
           sudo -E apt -yqq update
           sudo -E apt -yqq purge $(cat $GITHUB_WORKSPACE/Depends.txt | sed -n "2{s/\r$//;p;q}")
