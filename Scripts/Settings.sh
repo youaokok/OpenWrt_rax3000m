@@ -10,7 +10,7 @@ sed -i "s/192\.168\.[0-9]*\.[0-9]*/$OWRT_IP/g" ./package/base-files/files/bin/co
 #修改默认主机名
 sed -i "s/hostname='.*'/hostname='$OWRT_NAME'/g" ./package/base-files/files/bin/config_generate
 #修改默认wifi名称ssid为
-#sed -i 's/ssid='.*'/ssid='$OWRT_wifi_ssid'/g' ./package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i 's/ssid='.*'/ssid='$OWRT_wifi_ssid'/g' ./package/kernel/mac80211/files/lib/wifi/mac80211.sh
 #修改默认时区
 sed -i "s/timezone='.*'/timezone='CST-8'/g" ./package/base-files/files/bin/config_generate
 sed -i "/timezone='.*'/a\\\t\t\set system.@system[-1].zonename='Asia/Shanghai'" ./package/base-files/files/bin/config_generate
