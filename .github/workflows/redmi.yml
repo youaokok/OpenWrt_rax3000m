@@ -14,6 +14,9 @@ on:
       OWRT_NAME:
         required: true
         type: string
+      OWRT_wifi_ssid:
+        required: true
+        type: string
       OWRT_URL:
         required: true
         type: string
