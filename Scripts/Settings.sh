@@ -3,7 +3,7 @@
 #删除冲突插件
 rm -rf $(find ./feeds/luci/ -type d -regex ".*\(argon\|design\|openclash\).*")
 #删除冲突argon插件附属inas
-rm -rf package/feeds/smpackage/{luci-theme-inas}
+
 rm -rf feeds/smpackage/{base-files,dnsmasq,firewall*,fullconenat,libnftnl,nftables,ppp,opkg,ucl,upx,vsftpd-alt,miniupnpd-iptables,wireless-regdb}
 #修改默认主题
 #sed -i "s/luci-theme-bootstrap/luci-theme-$OWRT_THEME/g" $(find ./feeds/luci/collections/ -type f -name "Makefile")
