@@ -7,7 +7,18 @@ on:
     - cron: 0 20 * * *
   #手动编译
   workflow_dispatch:
-
+    inputs:
+      REPO_BRANCH:
+        description: '天灵源码-请选择分支'
+        required: true
+        default: 'openwrt-24.10'
+        type: choice
+        options:
+          - 'openwrt-23.05'
+          - 'openwrt-22.03'
+          - 'openwrt-21.02'
+          - 'master'
+          - 'mt798x'
 #CI权限
 permissions: write-all
 
