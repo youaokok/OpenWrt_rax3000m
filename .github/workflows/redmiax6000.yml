@@ -25,6 +25,7 @@ permissions: write-all
 #CI任务
 jobs:
   owrt_config:
+    if: ${{ github.event.inputs.REPO_BRANCH }} == mt798x
     #调用公用编译核心OWRT-CORE.yml
     uses: ./.github/workflows/redmi.yml
     with:
