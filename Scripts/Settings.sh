@@ -15,6 +15,8 @@ sed -i "s/hostname='.*'/hostname='$OWRT_NAME'/g" ./package/base-files/files/bin/
 sed -i 's/ssid='.*'/ssid='$OWRT_wifi_ssid'/g' ./package/kernel/mac80211/files/lib/wifi/mac80211.sh
 #修改默认wifi名称ssid为 hanwckf源码修改  ssid="ImmortalWrt-2.4G"
 sed -i 's/ssid='.*'/ssid='$OWRT_wifi_ssid'/g' ./package/mtk/applications/mtwifi-cfg/files/mtwifi.sh
+#修改WIFI地区
+#sed -i "s/country='.*'/country='CN'/g" $WIFI_UC
 #修改默认时区
 sed -i "s/timezone='.*'/timezone='CST-8'/g" ./package/base-files/files/bin/config_generate
 sed -i "/timezone='.*'/a\\\t\t\set system.@system[-1].zonename='Asia/Shanghai'" ./package/base-files/files/bin/config_generate
