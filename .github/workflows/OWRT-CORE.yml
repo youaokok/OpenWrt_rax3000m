@@ -76,7 +76,7 @@ jobs:
 
       - name: 合并磁盘
         run: |
-          bash ./scripts/merge_disk.sh
+          $GITHUB_WORKSPACE/Scripts/merge_disk.sh
 
           
       - name: Check Scripts
