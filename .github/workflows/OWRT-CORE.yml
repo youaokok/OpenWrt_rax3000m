@@ -110,7 +110,7 @@ jobs:
       - name: Custom Settings
         run: |
           cd ./owrt
-
+          rm -rf ./feeds
           rm -rf ./tmp* ./.config*
           cat $GITHUB_WORKSPACE/Config/$OWRT_TARGET.txt $GITHUB_WORKSPACE/Config/Prax3000.txt >> .config
 
