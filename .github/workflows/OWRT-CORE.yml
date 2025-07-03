@@ -74,6 +74,11 @@ jobs:
           echo "OWRT_PW=$OWRT_PW" >> $GITHUB_ENV
           echo "OWRT_IP=$OWRT_IP" >> $GITHUB_ENV
 
+      - name: 合并磁盘
+        run: |
+          bash $GITHUB_WORKSPACE/scripts/merge_disk.sh
+
+          
       - name: Check Scripts
         run: |
           cd ./Scripts
