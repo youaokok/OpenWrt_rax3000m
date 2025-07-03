@@ -74,10 +74,18 @@ jobs:
           echo "OWRT_PW=$OWRT_PW" >> $GITHUB_ENV
           echo "OWRT_IP=$OWRT_IP" >> $GITHUB_ENV
 
-      - name: 合并磁盘
-        run: |
-          $GITHUB_WORKSPACE/Scripts/merge_disk.sh
+      - name: Combine Disks
+        uses: easimon/maximize-build-space@master
+        with:
+          swap-size-mb: 1024
+          temp-reserve-mb: 100
+          root-reserve-mb: 1024
 
+      - name: Checkout
+        uses: actions/checkout@main
+
+      - name: Checkout
+        uses: actions/checkout@main
           
       - name: Check Scripts
         run: |
@@ -115,7 +123,7 @@ jobs:
       - name: Custom Settings
         run: |
           cd ./owrt
-          rm -rf ./feeds
+          
           rm -rf ./tmp* ./.config*
           cat $GITHUB_WORKSPACE/Config/$OWRT_TARGET.txt $GITHUB_WORKSPACE/Config/Prax3000.txt >> .config
 
